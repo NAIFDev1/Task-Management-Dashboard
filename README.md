@@ -17,6 +17,10 @@ A clean, dependency-free task management dashboard built with vanilla HTML, CSS,
 - **Accessible** – Keyboard navigation, visible focus states, `aria` labels, and reduced-motion support.
 - **Keyboard shortcuts** – `n` new task, `/` focus search, `Esc` close dialogs.
 
+## Live Demo
+
+Try the dashboard online: [https://naifdev1.github.io/Task-Management-Dashboard/](https://naifdev1.github.io/Task-Management-Dashboard/)
+
 ## Getting Started
 
 No build step or dependencies required. Open `index.html` directly in a browser, or serve the folder with any static server:
