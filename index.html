@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TaskFlow – A clean task management dashboard. Organize tasks by status and priority." />
+  <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+  <title>TaskFlow – Task Management Dashboard</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M9 11l3 3L22 4'/><path d='M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    // Apply saved/system theme before first paint to prevent a flash.
+    (function () {
+      try {
+        var saved = localStorage.getItem('taskflow_theme');
+        var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) { /* localStorage unavailable */ }
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===================== SVG ICON SPRITE ===================== -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+    <symbol id="icon-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></symbol>
+    <symbol id="icon-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h.01"/><path d="M3 18h.01"/><path d="M3 6h.01"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M8 6h13"/></symbol>
+    <symbol id="icon-circle-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="icon-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="icon-pencil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></symbol>
+    <symbol id="icon-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></symbol>
+    <symbol id="icon-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></symbol>
+    <symbol id="icon-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/></symbol>
+    <symbol id="icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></symbol>
+    <symbol id="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+    <symbol id="icon-inbox" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+    <symbol id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="icon-columns" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/><path d="M15 3v18"/></symbol>
+    <symbol id="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></symbol>
+    <symbol id="icon-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></symbol>
+    <symbol id="icon-rotate-ccw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+  </svg>
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="sidebar" aria-label="Sidebar navigation">
+    <div class="sidebar-top">
+      <a href="#" class="brand" aria-label="TaskFlow home">
+        <span class="brand-icon" aria-hidden="true">
+          <svg class="icon"><use href="#icon-check"/></svg>
+        </span>
+        <span class="brand-text">TaskFlow</span>
+      </a>
+
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li>
+            <a href="#" class="nav-link active" aria-current="page">
+              <span aria-hidden="true"><svg class="icon"><use href="#icon-grid"/></svg></span>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link" onclick="scrollToSection('tasks'); return false;">
+              <span aria-hidden="true"><svg class="icon"><use href="#icon-list"/></svg></span>
+              <span>My Tasks</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link" onclick="scrollToSection('tasks', 'completed'); return false;">
+              <span aria-hidden="true"><svg class="icon"><use href="#icon-circle-check"/></svg></span>
+              <span>Completed</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link" onclick="scrollToSection('settings'); return false;">
+              <span aria-hidden="true"><svg class="icon"><use href="#icon-settings"/></svg></span>
+              <span>Settings</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="sidebar-footer">
+      <button type="button" id="theme-toggle" class="nav-link nav-link-btn" aria-label="Switch to dark mode">
+        <span class="icon-moon-wrap" aria-hidden="true"><svg class="icon icon-moon"><use href="#icon-moon"/></svg></span>
+        <span class="icon-sun-wrap" aria-hidden="true" hidden><svg class="icon icon-sun"><use href="#icon-sun"/></svg></span>
+        <span class="theme-label">Theme</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <main class="main">
+
+    <!-- Header -->
+    <header class="page-header">
+      <div>
+        <h1>Dashboard</h1>
+        <p>Welcome back</p>
+      </div>
+      <button type="button" id="add-task-btn" class="btn btn-primary">
+        <span aria-hidden="true"><svg class="icon"><use href="#icon-plus"/></svg></span>
+        Add Task
+      </button>
+    </header>
+
+    <!-- Message banner -->
+    <div id="message-banner" class="message-banner" role="alert" aria-live="polite" hidden>
+      <span id="message-text"></span>
+      <button type="button" id="message-close" class="message-close" aria-label="Dismiss message">
+        <svg class="icon"><use href="#icon-x"/></svg>
+      </button>
+    </div>
+
+    <!-- Statistics -->
+    <section class="stats-section" aria-label="Dashboard statistics">
+      <h2 class="section-heading">Dashboard Statistics</h2>
+      <div class="stats-grid">
+        <article class="stat-card">
+          <div class="stat-info">
+            <h3>Total Tasks</h3>
+            <span id="total-tasks" class="stat-value">0</span>
+          </div>
+          <span class="stat-icon stat-icon-teal" aria-hidden="true">
+            <svg class="icon"><use href="#icon-clipboard"/></svg>
+          </span>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-info">
+            <h3>To Do</h3>
+            <span id="todo-tasks" class="stat-value">0</span>
+          </div>
+          <span class="stat-icon stat-icon-slate" aria-hidden="true">
+            <svg class="icon"><use href="#icon-grid"/></svg>
+          </span>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-info">
+            <h3>In Progress</h3>
+            <span id="progress-tasks" class="stat-value">0</span>
+          </div>
+          <span class="stat-icon stat-icon-amber" aria-hidden="true">
+            <svg class="icon"><use href="#icon-flag"/></svg>
+          </span>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-info">
+            <h3>Completed</h3>
+            <span id="completed-tasks" class="stat-value">0</span>
+          </div>
+          <span class="stat-icon stat-icon-green" aria-hidden="true">
+            <svg class="icon"><use href="#icon-circle-check"/></svg>
+          </span>
+        </article>
+      </div>
+    </section>
+
+    <!-- Tasks -->
+    <section id="tasks" class="tasks-section" aria-label="My tasks">
+      <div class="section-bar">
+        <h2 class="section-heading">My Tasks</h2>
+        <span id="task-count-label" class="task-count-label">0 tasks</span>
+      </div>
+
+      <div class="task-toolbar">
+        <div class="search-wrapper">
+          <span class="search-icon" aria-hidden="true">
+            <svg class="icon"><use href="#icon-search"/></svg>
+          </span>
+          <label for="search-tasks" class="visually-hidden">Search tasks</label>
+          <input
+            type="search"
+            id="search-tasks"
+            placeholder="Search tasks..."
+            autocomplete="off"
+            aria-label="Search tasks"
+          />
+        </div>
+
+        <div class="filter-wrap">
+          <label for="task-filter" class="visually-hidden">Filter by status</label>
+          <select name="task-filter" id="task-filter" aria-label="Filter by status">
+            <option value="all">All Statuses</option>
+            <option value="todo">To Do</option>
+            <option value="progress">In Progress</option>
+            <option value="completed">Completed</option>
+          </select>
+
+          <label for="priority-filter" class="visually-hidden">Filter by priority</label>
+          <select name="priority-filter" id="priority-filter" aria-label="Filter by priority">
+            <option value="all">All Priorities</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+        </div>
+
+        <div class="toolbar-actions">
+          <!-- View toggle -->
+          <div class="view-toggle" role="group" aria-label="View mode">
+            <button type="button" id="view-grid" class="view-btn active" aria-pressed="true" aria-label="Grid view" title="Grid view">
+              <svg class="icon"><use href="#icon-grid"/></svg>
+            </button>
+            <button type="button" id="view-board" class="view-btn" aria-pressed="false" aria-label="Board view" title="Board view">
+              <svg class="icon"><use href="#icon-columns"/></svg>
+            </button>
+          </div>
+
+          <!-- Export / Import -->
+          <button type="button" id="export-btn" class="mini-btn" aria-label="Export tasks to JSON" title="Export tasks (JSON)">
+            <svg class="icon"><use href="#icon-download"/></svg>
+          </button>
+          <button type="button" id="import-btn" class="mini-btn" aria-label="Import tasks from JSON" title="Import tasks (JSON)">
+            <svg class="icon"><use href="#icon-upload"/></svg>
+          </button>
+          <input type="file" id="import-input" accept="application/json,.json" hidden />
+        </div>
+      </div>
+
+      <div id="tasks-container" class="tasks-grid" aria-live="polite"></div>
+      <div id="empty-state" class="empty-state" hidden>
+        <span class="empty-icon" aria-hidden="true">
+          <svg class="icon"><use href="#icon-inbox"/></svg>
+        </span>
+        <h3>No tasks found</h3>
+        <p>Try a different search or filter, or add a new task.</p>
+      </div>
+    </section>
+
+    <!-- Settings -->
+    <section id="settings" class="settings-section" aria-label="Settings">
+      <h2 class="section-heading">Settings</h2>
+      <p class="settings-intro">Adjust your preferences and settings for the dashboard.</p>
+      <ul class="settings-list">
+        <li>
+          <a href="#" class="settings-link">
+            <span aria-hidden="true"><svg class="icon"><use href="#icon-pencil"/></svg></span>
+            Profile Settings
+            <span class="settings-arrow" aria-hidden="true"><svg class="icon"><use href="#icon-arrow-right"/></svg></span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="settings-link">
+            <span aria-hidden="true"><svg class="icon"><use href="#icon-flag"/></svg></span>
+            Notification Settings
+            <span class="settings-arrow" aria-hidden="true"><svg class="icon"><use href="#icon-arrow-right"/></svg></span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="settings-link">
+            <span aria-hidden="true"><svg class="icon"><use href="#icon-settings"/></svg></span>
+            Account Settings
+            <span class="settings-arrow" aria-hidden="true"><svg class="icon"><use href="#icon-arrow-right"/></svg></span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- ===================== TASK MODAL ===================== -->
+  <div id="task-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel">
+      <div class="modal-header">
+        <h2 id="modal-title">Add New Task</h2>
+        <button type="button" id="modal-close" class="modal-close" aria-label="Close dialog">
+          <svg class="icon"><use href="#icon-x"/></svg>
+        </button>
+      </div>
+
+      <form id="task-form">
+        <input type="hidden" id="task-id" name="task-id" />
+
+        <div class="form-field">
+          <label for="task-title">Task Title</label>
+          <input
+            type="text"
+            id="task-title"
+            name="task-title"
+            placeholder="Enter task title"
+            required
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="task-description">Description</label>
+          <textarea
+            id="task-description"
+            name="task-description"
+            placeholder="Enter task description"
+            rows="3"
+          ></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="task-date">Due Date</label>
+            <input type="date" id="task-date" name="task-date" />
+          </div>
+
+          <div class="form-field">
+            <label for="task-priority">Priority</label>
+            <select id="task-priority" name="task-priority">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="task-status">Status</label>
+          <select id="task-status" name="task-status">
+            <option value="todo">To Do</option>
+            <option value="progress">In Progress</option>
+            <option value="completed">Completed</option>
+          </select>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" id="cancel-task-btn" class="btn btn-ghost">Cancel</button>
+          <button type="submit" id="modal-submit" class="btn btn-primary">
+            <span aria-hidden="true"><svg class="icon"><use href="#icon-plus"/></svg></span>
+            Create Task
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete confirm -->
+  <div id="confirm-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="confirm-title" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel modal-panel-sm">
+      <div class="modal-header">
+        <h2 id="confirm-title">Delete Task</h2>
+        <button type="button" id="confirm-close" class="modal-close" aria-label="Close dialog">
+          <svg class="icon"><use href="#icon-x"/></svg>
+        </button>
+      </div>
+      <p class="confirm-text">Are you sure you want to delete this task?</p>
+      <div class="form-actions">
+        <button type="button" id="confirm-cancel" class="btn btn-ghost">Cancel</button>
+        <button type="button" id="confirm-delete" class="btn btn-danger">
+          <span aria-hidden="true"><svg class="icon"><use href="#icon-trash"/></svg></span>
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Undo toast -->
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden>
+    <span id="toast-text"></span>
+    <button type="button" id="toast-undo" class="toast-undo" hidden>
+      <svg class="icon"><use href="#icon-rotate-ccw"/></svg>
+      Undo
+    </button>
+    <button type="button" id="toast-close" class="toast-close" aria-label="Dismiss notification">
+      <svg class="icon"><use href="#icon-x"/></svg>
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
