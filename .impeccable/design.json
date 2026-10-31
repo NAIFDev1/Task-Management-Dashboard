@@ -1,0 +1,633 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-31T20:14:29.559Z",
+  "title": "Design System: TaskFlow",
+  "extensions": {
+    "colorMeta": {
+      "ground": {
+        "role": "neutral",
+        "displayName": "ground",
+        "tonalRamp": [
+          "oklch(15% 0.0015 260)",
+          "oklch(26% 0.003 260)",
+          "oklch(38% 0.0043 260)",
+          "oklch(50% 0.005 260)",
+          "oklch(62% 0.005 260)",
+          "oklch(74% 0.004 260)",
+          "oklch(86% 0.0023 260)",
+          "oklch(95% 0.0008 260)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "surface",
+        "tonalRamp": [
+          "oklch(15% 0.0015 260)",
+          "oklch(26% 0.003 260)",
+          "oklch(38% 0.0043 260)",
+          "oklch(50% 0.005 260)",
+          "oklch(62% 0.005 260)",
+          "oklch(74% 0.004 260)",
+          "oklch(86% 0.0023 260)",
+          "oklch(95% 0.0008 260)"
+        ]
+      },
+      "raised": {
+        "role": "neutral",
+        "displayName": "raised",
+        "tonalRamp": [
+          "oklch(15% 0.0015 260)",
+          "oklch(26% 0.003 260)",
+          "oklch(38% 0.0043 260)",
+          "oklch(50% 0.005 260)",
+          "oklch(62% 0.005 260)",
+          "oklch(74% 0.004 260)",
+          "oklch(86% 0.0023 260)",
+          "oklch(95% 0.0008 260)"
+        ]
+      },
+      "ink": {
+        "role": "primary",
+        "displayName": "ink",
+        "tonalRamp": [
+          "oklch(15% 0.0015 260)",
+          "oklch(26% 0.003 260)",
+          "oklch(38% 0.0043 260)",
+          "oklch(50% 0.005 260)",
+          "oklch(62% 0.005 260)",
+          "oklch(74% 0.004 260)",
+          "oklch(86% 0.0023 260)",
+          "oklch(95% 0.0008 260)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "muted",
+        "tonalRamp": [
+          "oklch(15% 0.0015 260)",
+          "oklch(26% 0.003 260)",
+          "oklch(38% 0.0043 260)",
+          "oklch(50% 0.005 260)",
+          "oklch(62% 0.005 260)",
+          "oklch(74% 0.004 260)",
+          "oklch(86% 0.0023 260)",
+          "oklch(95% 0.0008 260)"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "border",
+        "tonalRamp": [
+          "oklch(15% 0.0015 260)",
+          "oklch(26% 0.003 260)",
+          "oklch(38% 0.0043 260)",
+          "oklch(50% 0.005 260)",
+          "oklch(62% 0.005 260)",
+          "oklch(74% 0.004 260)",
+          "oklch(86% 0.0023 260)",
+          "oklch(95% 0.0008 260)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "rule",
+        "tonalRamp": [
+          "oklch(15% 0.0015 260)",
+          "oklch(26% 0.003 260)",
+          "oklch(38% 0.0043 260)",
+          "oklch(50% 0.005 260)",
+          "oklch(62% 0.005 260)",
+          "oklch(74% 0.004 260)",
+          "oklch(86% 0.0023 260)",
+          "oklch(95% 0.0008 260)"
+        ]
+      },
+      "control": {
+        "role": "neutral",
+        "displayName": "control",
+        "tonalRamp": [
+          "oklch(15% 0.0015 260)",
+          "oklch(26% 0.003 260)",
+          "oklch(38% 0.0043 260)",
+          "oklch(50% 0.005 260)",
+          "oklch(62% 0.005 260)",
+          "oklch(74% 0.004 260)",
+          "oklch(86% 0.0023 260)",
+          "oklch(95% 0.0008 260)"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "accent",
+        "tonalRamp": [
+          "oklch(15% 0.039 260)",
+          "oklch(26% 0.078 260)",
+          "oklch(38% 0.1105 260)",
+          "oklch(50% 0.13 260)",
+          "oklch(62% 0.13 260)",
+          "oklch(74% 0.104 260)",
+          "oklch(86% 0.0585 260)",
+          "oklch(95% 0.0195 260)"
+        ]
+      },
+      "accent-soft": {
+        "role": "primary",
+        "displayName": "accent soft",
+        "tonalRamp": [
+          "oklch(15% 0.0075 260)",
+          "oklch(26% 0.015 260)",
+          "oklch(38% 0.0213 260)",
+          "oklch(50% 0.025 260)",
+          "oklch(62% 0.025 260)",
+          "oklch(74% 0.02 260)",
+          "oklch(86% 0.0113 260)",
+          "oklch(95% 0.0037 260)"
+        ]
+      },
+      "accent-ink": {
+        "role": "primary",
+        "displayName": "accent ink",
+        "tonalRamp": [
+          "oklch(15% 0.039 260)",
+          "oklch(26% 0.078 260)",
+          "oklch(38% 0.1105 260)",
+          "oklch(50% 0.13 260)",
+          "oklch(62% 0.13 260)",
+          "oklch(74% 0.104 260)",
+          "oklch(86% 0.0585 260)",
+          "oklch(95% 0.0195 260)"
+        ]
+      },
+      "negative": {
+        "role": "neutral",
+        "displayName": "negative",
+        "tonalRamp": [
+          "oklch(15% 0.039 25)",
+          "oklch(26% 0.078 25)",
+          "oklch(38% 0.1105 25)",
+          "oklch(50% 0.13 25)",
+          "oklch(62% 0.13 25)",
+          "oklch(74% 0.104 25)",
+          "oklch(86% 0.0585 25)",
+          "oklch(95% 0.0195 25)"
+        ]
+      },
+      "negative-soft": {
+        "role": "neutral",
+        "displayName": "negative soft",
+        "tonalRamp": [
+          "oklch(15% 0.0075 25)",
+          "oklch(26% 0.015 25)",
+          "oklch(38% 0.0213 25)",
+          "oklch(50% 0.025 25)",
+          "oklch(62% 0.025 25)",
+          "oklch(74% 0.02 25)",
+          "oklch(86% 0.0113 25)",
+          "oklch(95% 0.0037 25)"
+        ]
+      },
+      "positive": {
+        "role": "neutral",
+        "displayName": "positive",
+        "tonalRamp": [
+          "oklch(15% 0.0165 155)",
+          "oklch(26% 0.033 155)",
+          "oklch(38% 0.0467 155)",
+          "oklch(50% 0.055 155)",
+          "oklch(62% 0.055 155)",
+          "oklch(74% 0.044 155)",
+          "oklch(86% 0.0248 155)",
+          "oklch(95% 0.0083 155)"
+        ]
+      },
+      "overlay": {
+        "role": "neutral",
+        "displayName": "overlay",
+        "tonalRamp": [
+          "oklch(15% 0.0015 260)",
+          "oklch(26% 0.003 260)",
+          "oklch(38% 0.0043 260)",
+          "oklch(50% 0.005 260)",
+          "oklch(62% 0.005 260)",
+          "oklch(74% 0.004 260)",
+          "oklch(86% 0.0023 260)",
+          "oklch(95% 0.0008 260)"
+        ]
+      },
+      "primary-ink": {
+        "role": "primary",
+        "displayName": "primary ink",
+        "tonalRamp": [
+          "oklch(15% 0.0015 260)",
+          "oklch(26% 0.003 260)",
+          "oklch(38% 0.0043 260)",
+          "oklch(50% 0.005 260)",
+          "oklch(62% 0.005 260)",
+          "oklch(74% 0.004 260)",
+          "oklch(86% 0.0023 260)",
+          "oklch(95% 0.0008 260)"
+        ]
+      },
+      "dark-ground": {
+        "role": "neutral",
+        "displayName": "dark ground",
+        "tonalRamp": [
+          "oklch(15% 0.0015 260)",
+          "oklch(26% 0.003 260)",
+          "oklch(38% 0.0043 260)",
+          "oklch(50% 0.005 260)",
+          "oklch(62% 0.005 260)",
+          "oklch(74% 0.004 260)",
+          "oklch(86% 0.0023 260)",
+          "oklch(95% 0.0008 260)"
+        ]
+      },
+      "dark-surface": {
+        "role": "neutral",
+        "displayName": "dark surface",
+        "tonalRamp": [
+          "oklch(15% 0.0015 260)",
+          "oklch(26% 0.003 260)",
+          "oklch(38% 0.0043 260)",
+          "oklch(50% 0.005 260)",
+          "oklch(62% 0.005 260)",
+          "oklch(74% 0.004 260)",
+          "oklch(86% 0.0023 260)",
+          "oklch(95% 0.0008 260)"
+        ]
+      },
+      "dark-raised": {
+        "role": "neutral",
+        "displayName": "dark raised",
+        "tonalRamp": [
+          "oklch(15% 0.0015 260)",
+          "oklch(26% 0.003 260)",
+          "oklch(38% 0.0043 260)",
+          "oklch(50% 0.005 260)",
+          "oklch(62% 0.005 260)",
+          "oklch(74% 0.004 260)",
+          "oklch(86% 0.0023 260)",
+          "oklch(95% 0.0008 260)"
+        ]
+      },
+      "dark-ink": {
+        "role": "primary",
+        "displayName": "dark ink",
+        "tonalRamp": [
+          "oklch(15% 0.0015 260)",
+          "oklch(26% 0.003 260)",
+          "oklch(38% 0.0043 260)",
+          "oklch(50% 0.005 260)",
+          "oklch(62% 0.005 260)",
+          "oklch(74% 0.004 260)",
+          "oklch(86% 0.0023 260)",
+          "oklch(95% 0.0008 260)"
+        ]
+      },
+      "dark-muted": {
+        "role": "neutral",
+        "displayName": "dark muted",
+        "tonalRamp": [
+          "oklch(15% 0.0015 260)",
+          "oklch(26% 0.003 260)",
+          "oklch(38% 0.0043 260)",
+          "oklch(50% 0.005 260)",
+          "oklch(62% 0.005 260)",
+          "oklch(74% 0.004 260)",
+          "oklch(86% 0.0023 260)",
+          "oklch(95% 0.0008 260)"
+        ]
+      },
+      "dark-border": {
+        "role": "neutral",
+        "displayName": "dark border",
+        "tonalRamp": [
+          "oklch(15% 0.0015 260)",
+          "oklch(26% 0.003 260)",
+          "oklch(38% 0.0043 260)",
+          "oklch(50% 0.005 260)",
+          "oklch(62% 0.005 260)",
+          "oklch(74% 0.004 260)",
+          "oklch(86% 0.0023 260)",
+          "oklch(95% 0.0008 260)"
+        ]
+      },
+      "dark-rule": {
+        "role": "neutral",
+        "displayName": "dark rule",
+        "tonalRamp": [
+          "oklch(15% 0.0015 260)",
+          "oklch(26% 0.003 260)",
+          "oklch(38% 0.0043 260)",
+          "oklch(50% 0.005 260)",
+          "oklch(62% 0.005 260)",
+          "oklch(74% 0.004 260)",
+          "oklch(86% 0.0023 260)",
+          "oklch(95% 0.0008 260)"
+        ]
+      },
+      "dark-control": {
+        "role": "neutral",
+        "displayName": "dark control",
+        "tonalRamp": [
+          "oklch(15% 0.0015 260)",
+          "oklch(26% 0.003 260)",
+          "oklch(38% 0.0043 260)",
+          "oklch(50% 0.005 260)",
+          "oklch(62% 0.005 260)",
+          "oklch(74% 0.004 260)",
+          "oklch(86% 0.0023 260)",
+          "oklch(95% 0.0008 260)"
+        ]
+      },
+      "dark-accent": {
+        "role": "primary",
+        "displayName": "dark accent",
+        "tonalRamp": [
+          "oklch(15% 0.039 260)",
+          "oklch(26% 0.078 260)",
+          "oklch(38% 0.1105 260)",
+          "oklch(50% 0.13 260)",
+          "oklch(62% 0.13 260)",
+          "oklch(74% 0.104 260)",
+          "oklch(86% 0.0585 260)",
+          "oklch(95% 0.0195 260)"
+        ]
+      },
+      "dark-accent-soft": {
+        "role": "primary",
+        "displayName": "dark accent soft",
+        "tonalRamp": [
+          "oklch(15% 0.0075 260)",
+          "oklch(26% 0.015 260)",
+          "oklch(38% 0.0213 260)",
+          "oklch(50% 0.025 260)",
+          "oklch(62% 0.025 260)",
+          "oklch(74% 0.02 260)",
+          "oklch(86% 0.0113 260)",
+          "oklch(95% 0.0037 260)"
+        ]
+      },
+      "dark-accent-ink": {
+        "role": "primary",
+        "displayName": "dark accent ink",
+        "tonalRamp": [
+          "oklch(15% 0.039 260)",
+          "oklch(26% 0.078 260)",
+          "oklch(38% 0.1105 260)",
+          "oklch(50% 0.13 260)",
+          "oklch(62% 0.13 260)",
+          "oklch(74% 0.104 260)",
+          "oklch(86% 0.0585 260)",
+          "oklch(95% 0.0195 260)"
+        ]
+      },
+      "dark-negative": {
+        "role": "neutral",
+        "displayName": "dark negative",
+        "tonalRamp": [
+          "oklch(15% 0.039 25)",
+          "oklch(26% 0.078 25)",
+          "oklch(38% 0.1105 25)",
+          "oklch(50% 0.13 25)",
+          "oklch(62% 0.13 25)",
+          "oklch(74% 0.104 25)",
+          "oklch(86% 0.0585 25)",
+          "oklch(95% 0.0195 25)"
+        ]
+      },
+      "dark-negative-soft": {
+        "role": "neutral",
+        "displayName": "dark negative soft",
+        "tonalRamp": [
+          "oklch(15% 0.0075 25)",
+          "oklch(26% 0.015 25)",
+          "oklch(38% 0.0213 25)",
+          "oklch(50% 0.025 25)",
+          "oklch(62% 0.025 25)",
+          "oklch(74% 0.02 25)",
+          "oklch(86% 0.0113 25)",
+          "oklch(95% 0.0037 25)"
+        ]
+      },
+      "dark-positive": {
+        "role": "neutral",
+        "displayName": "dark positive",
+        "tonalRamp": [
+          "oklch(15% 0.0165 155)",
+          "oklch(26% 0.033 155)",
+          "oklch(38% 0.0467 155)",
+          "oklch(50% 0.055 155)",
+          "oklch(62% 0.055 155)",
+          "oklch(74% 0.044 155)",
+          "oklch(86% 0.0248 155)",
+          "oklch(95% 0.0083 155)"
+        ]
+      },
+      "dark-overlay": {
+        "role": "neutral",
+        "displayName": "dark overlay",
+        "tonalRamp": [
+          "oklch(15% 0.0015 260)",
+          "oklch(26% 0.003 260)",
+          "oklch(38% 0.0043 260)",
+          "oklch(50% 0.005 260)",
+          "oklch(62% 0.005 260)",
+          "oklch(74% 0.004 260)",
+          "oklch(86% 0.0023 260)",
+          "oklch(95% 0.0008 260)"
+        ]
+      },
+      "dark-primary-ink": {
+        "role": "primary",
+        "displayName": "dark primary ink",
+        "tonalRamp": [
+          "oklch(15% 0.0015 260)",
+          "oklch(26% 0.003 260)",
+          "oklch(38% 0.0043 260)",
+          "oklch(50% 0.005 260)",
+          "oklch(62% 0.005 260)",
+          "oklch(74% 0.004 260)",
+          "oklch(86% 0.0023 260)",
+          "oklch(95% 0.0008 260)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "headline": {
+        "displayName": "headline",
+        "purpose": "Shipped headline role."
+      },
+      "section": {
+        "displayName": "section",
+        "purpose": "Shipped section role."
+      },
+      "body": {
+        "displayName": "body",
+        "purpose": "Shipped body role."
+      },
+      "task-title": {
+        "displayName": "task title",
+        "purpose": "Shipped task title role."
+      },
+      "label": {
+        "displayName": "label",
+        "purpose": "Shipped label role."
+      },
+      "metadata": {
+        "displayName": "metadata",
+        "purpose": "Shipped metadata role."
+      },
+      "count": {
+        "displayName": "count",
+        "purpose": "Shipped count role."
+      }
+    },
+    "shadows": [
+      {
+        "name": "toast",
+        "value": "0 8px 30px #0002",
+        "purpose": "Transient notification only."
+      }
+    ],
+    "motion": [
+      {
+        "name": "document-scroll",
+        "value": "smooth",
+        "purpose": "Document scrolling only; auto under reduced motion. No authored transitions or entrance animation."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide-min",
+        "value": "1600px"
+      },
+      {
+        "name": "compact-max",
+        "value": "1150px"
+      },
+      {
+        "name": "stack-rail-max",
+        "value": "900px"
+      },
+      {
+        "name": "phone-max",
+        "value": "640px"
+      },
+      {
+        "name": "narrow-phone-max",
+        "value": "360px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Native action with visible focus.",
+      "html": "<button class=\"ds-button-primary\">New task</button>",
+      "css": ".ds-button-primary{font:500 13px/1.5 var(--font);background:var(--ink);color:var(--primary-ink);border:0;border-radius:7px;min-height:40px;padding:9px 14px;cursor:pointer}.ds-button-primary:hover{opacity:.85}.ds-button-primary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}"
+    },
+    {
+      "name": "Secondary button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Native action with visible focus.",
+      "html": "<button class=\"ds-button-secondary\">Cancel</button>",
+      "css": ".ds-button-secondary{font:500 13px/1.5 var(--font);background:var(--surface);color:var(--ink);border:1px solid var(--control);border-radius:7px;min-height:40px;padding:9px 14px;cursor:pointer}.ds-button-secondary:hover{background:var(--raised)}.ds-button-secondary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}"
+    },
+    {
+      "name": "Quiet destructive button",
+      "kind": "button",
+      "refersTo": "button-danger-quiet",
+      "description": "Native action with visible focus.",
+      "html": "<button class=\"ds-button-danger-quiet\">Delete task</button>",
+      "css": ".ds-button-danger-quiet{font:500 13px/1.5 var(--font);background:transparent;color:var(--negative);border:0;border-radius:7px;min-height:40px;padding:9px 14px;cursor:pointer}.ds-button-danger-quiet:hover{background:var(--negative-soft)}.ds-button-danger-quiet:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}"
+    },
+    {
+      "name": "Form field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Labeled native input.",
+      "html": "<label class=\"ds-field\">Task name<input placeholder=\"What needs to happen?\"></label>",
+      "css": ".ds-field{font:500 13px/1.5 var(--font);color:var(--ink)}.ds-field input{display:block;width:100%;margin-top:8px;background:var(--surface);color:var(--ink);border:1px solid var(--control);border-radius:6px;padding:11px 12px;min-height:44px;font:400 14px/1.5 var(--font)}.ds-field input::placeholder{color:var(--muted)}.ds-field input:focus{outline:2px solid var(--accent);outline-offset:2px}"
+    },
+    {
+      "name": "Workspace navigation",
+      "kind": "nav",
+      "description": "Ink underline identifies the current destination.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Workspace\"><a href=\"#all\" aria-current=\"page\">My tasks</a><a href=\"#today\">Today</a><a href=\"#upcoming\">Upcoming</a></nav>",
+      "css": ".ds-nav{display:flex;gap:28px;min-height:76px;font:400 13px/1.5 var(--font);background:var(--surface)}.ds-nav a{display:flex;align-items:center;position:relative;color:var(--muted);text-decoration:none}.ds-nav a:hover{color:var(--ink)}.ds-nav a[aria-current]{color:var(--ink);font-weight:500}.ds-nav a[aria-current]::after{content:\"\";position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--ink)}.ds-nav a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}"
+    },
+    {
+      "name": "Date filter",
+      "kind": "chip",
+      "refersTo": "date-filter",
+      "description": "Selected deadline scope with reset.",
+      "html": "<button class=\"ds-date\">Due 2 Nov · Clear</button>",
+      "css": ".ds-date{font:400 12px/1.5 var(--font);background:var(--accent-soft);color:var(--accent-ink);border:0;border-radius:5px;padding:6px 10px;min-height:32px;cursor:pointer}.ds-date:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}"
+    },
+    {
+      "name": "Task card",
+      "kind": "card",
+      "refersTo": "task-card",
+      "description": "Task identity with native status control.",
+      "html": "<article class=\"ds-card\"><span class=\"ds-priority\">High</span><button class=\"ds-identity\"><strong>Map the onboarding flow</strong><span>Keep the first three steps focused.</span></button><select class=\"ds-status\" aria-label=\"Task status\"><option>To do</option><option>In progress</option><option>Completed</option></select></article>",
+      "css": ".ds-card{background:var(--surface);color:var(--ink);border:1px solid var(--border);border-radius:12px;padding:18px;font:400 12px/1.5 var(--font);max-width:330px}.ds-priority{font-weight:500}.ds-identity{display:block;width:100%;padding:0;margin:12px 0 18px;text-align:left;background:transparent;color:var(--ink);border:0;cursor:pointer;font:400 14px/1.5 var(--font)}.ds-identity strong{font-weight:500;display:block}.ds-identity span{display:block;margin-top:4px;font-size:12px;color:var(--muted)}.ds-status{background:var(--surface);color:var(--muted);border:1px solid var(--border);border-radius:5px;padding:7px 5px;font:400 12px/1.5 var(--font);min-height:32px}.ds-identity:focus-visible,.ds-status:focus{outline:2px solid var(--accent);outline-offset:3px;}"
+    },
+    {
+      "name": "Focus day",
+      "kind": "custom",
+      "description": "Selected day and due count.",
+      "html": "<button class=\"ds-day\" aria-pressed=\"true\"><span>Mon</span><b>2</b><span class=\"ds-count\">1</span></button>",
+      "css": ".ds-day{background:var(--accent-soft);color:var(--accent-ink);border:0;border-radius:6px;padding:6px 0 8px;min-height:74px;min-width:44px;display:flex;flex-direction:column;align-items:center;gap:7px;font:400 11px/1.5 var(--font);cursor:pointer}.ds-day b{font-size:14px;font-weight:500}.ds-count{min-width:16px;height:16px;line-height:16px;border-radius:3px;background:var(--accent-soft)}.ds-day:hover{background:var(--raised)}.ds-day:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}"
+    },
+    {
+      "name": "Rail panel",
+      "kind": "card",
+      "refersTo": "rail-panel",
+      "description": "Flat summary and ink progress.",
+      "html": "<section class=\"ds-panel\"><h2>Making progress</h2><div class=\"ds-progress\"><span></span></div><p>2 of 10 tasks complete</p></section>",
+      "css": ".ds-panel{background:var(--surface);color:var(--ink);border:1px solid var(--border);border-radius:14px;padding:20px;max-width:290px;font:400 14px/1.5 var(--font)}.ds-panel h2{margin:0;font-size:15px;font-weight:600;line-height:1.4}.ds-panel p{color:var(--muted);margin:10px 0 0;font-size:13px}.ds-progress{height:5px;background:var(--raised);border-radius:6px;margin-top:18px;overflow:hidden}.ds-progress span{display:block;width:20%;height:100%;background:var(--ink);border-radius:6px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Achromatic ledger",
+    "overview": "TaskFlow uses the Achromatic ledger world as a calm working surface. Ink establishes hierarchy; aligned metadata and flat grouped containers keep tasks readable. Top navigation supports personal work without account or collaboration ornament.\n\nLight and dark are equal saved preferences. Self-hosted Geist, native controls, stroke SVG icons and an accessible native dialog keep the interface direct. The focus-week strip represents real open-task deadlines.",
+    "keyCharacteristics": [
+      "Neutral chrome and inverse-ink primary actions.",
+      "Compact type and regular tabular numerals.",
+      "Flat containers, fine rules and semantic color.",
+      "Visible focus and native status alternatives to dragging."
+    ],
+    "rules": [
+      {
+        "name": "The Deadline Signal Rule",
+        "body": "Within task metadata, negative color identifies overdue dates; High priority remains ink with a flag and explicit label. Errors and destructive actions use the negative channel in their own contexts.",
+        "section": "colors"
+      },
+      {
+        "name": "The Single Family Rule",
+        "body": "Use Geist for text and numbers, with tabular numerals inherited from the body; do not add decorative display or monospace roles.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Surface Rule",
+        "body": "Use tonal fills and fine borders for ordinary hierarchy. Reserve the implemented shadow for transient toast feedback.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do retain neutral High-priority text and a flag while overdue dates use the negative signal.",
+      "Do bind new UI to light and dark CSS variables, including inverse primary text.",
+      "Do preserve visible focus, descriptive labels and native status controls beside dragging.",
+      "Do use the established type roles, flat surfaces and SVG stroke icons."
+    ],
+    "donts": [
+      "Don't add saturated navigation, decorative gradients or colored metric tiles.",
+      "Don't make color the only explanation of priority, overdue state or selection.",
+      "Don't add animation or shadows to ordinary task containers."
+    ]
+  }
+}

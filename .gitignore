@@ -1,9 +1,8 @@
-# VS Code
 .vscode/
-
-# System / OS
 Thumbs.db
 .DS_Store
-
-# Logs
 *.log
+.taste-skill/
+.impeccable/review/
+.impeccable/questions/
+node_modules/
