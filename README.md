@@ -1,73 +1,62 @@
-# TaskFlow – Task Management Dashboard
+# TaskFlow
 
-A clean, dependency-free task management dashboard built with vanilla HTML, CSS, and JavaScript. Organize tasks by status and priority, switch between grid and Kanban board views, and keep your data locally in the browser.
+A personal task inbox built with HTML, CSS and JavaScript. Grouped rows make overdue work, today's deadlines and upcoming tasks easy to scan. A seven-day planner filters the inbox by due date; grid and Kanban views remain available.
 
-## Features
+## Run locally
 
-- **Full task CRUD** – Add, edit, and (with confirmation) delete tasks.
-- **Local persistence** – Tasks are saved to `localStorage` and survive page reloads.
-- **Grid & Kanban views** – Toggle between a card grid and a three-column board; drag and drop cards between To Do / In Progress / Completed.
-- **Instant search + filters** – Filter by status and priority, search by title or description.
-- **Live statistics** – Total, To Do, In Progress, and Completed counters.
-- **Export / Import** – Save all tasks to a JSON file and restore them later (smart merge by id).
-- **Undo** – Recover a deleted or moved task right after the action.
-- **Multi-tab sync** – Changes in one tab are reflected in others instantly.
-- **Overdue detection** – Dates in the past are highlighted.
-- **Dark / Light mode** – Theme follows your saved preference or the system setting.
-- **Accessible** – Keyboard navigation, visible focus states, `aria` labels, and reduced-motion support.
-- **Keyboard shortcuts** – `n` new task, `/` focus search, `Esc` close dialogs.
+There are no runtime dependencies or build step. Serve this directory over HTTP because the application uses JavaScript modules:
 
-## Live Demo
-
-Try the dashboard online: [https://naifdev1.github.io/Task-Management-Dashboard/](https://naifdev1.github.io/Task-Management-Dashboard/)
-
-## Getting Started
-
-No build step or dependencies required. Open `index.html` directly in a browser, or serve the folder with any static server:
-
-```bash
-# Python (recommended)
+```sh
 python -m http.server 8000
-
-# or VS Code Live Server
 ```
 
-Then open `http://localhost:8000`.
+Open [localhost:8000](http://localhost:8000/). The existing public address is [TaskFlow on GitHub Pages](https://naifdev1.github.io/Task-Management-Dashboard/); a development branch does not update that deployment automatically.
 
-## Tech Stack
+## Working with tasks
 
-- HTML5 semantic markup
-- CSS3 custom properties (design tokens) with a responsive flat-design system
-- Vanilla JavaScript (ES5-compatible, no libraries)
-- Google Fonts: Plus Jakarta Sans
+- Create, edit, complete, reopen and delete tasks. Task names allow 120 characters, descriptions 2,000.
+- Search names and descriptions; combine priority, status and due-date filters. Sort by priority, due date or newest first.
+- Use My tasks, Today (including overdue work), Upcoming and Completed as separate hash routes. Settings contains appearance and data controls.
+- Switch between grouped list, card grid and Kanban board. Desktop drag/drop and labelled native status selectors change the same data. Mobile board tabs select a column.
+- Export JSON or import previous array-based backups. Imports update matching IDs and preserve unrelated tasks; malformed records are skipped. Limits: 1 MB per import, 1,000 tasks per workspace.
+- Undo deletion, status movement, import, clearing or sample replacement for 15 seconds. Undo preserves newer or unrelated changes from another tab.
+- Choose light or dark mode. Shortcuts: **N** opens a task, **/** focuses search, **Esc** closes a dialog. Shortcuts do not interrupt typing.
 
-## Design System
+Tasks and preferences live in this browser's local storage. They are not synced to a server or another device. Multiple tabs on the same origin receive storage changes; a stale task form cannot overwrite a newer task revision. If storage is unavailable, the app explains its visit-only state and supports export.
 
-Flat design with clean slate neutrals and an indigo primary:
+The existing `taskflow_tasks`, `taskflow_theme` and `taskflow_view` keys remain compatible. A first visit gets ten explicitly labelled sample tasks. Existing tasks, including an intentionally empty saved workspace, are never replaced by samples. Clearing data or loading samples requires confirmation.
 
-- Primary: `#4F46E5` (indigo)
-- Background: `#F8FAFC` (light) / `#0F172A` (dark)
-- Typography: Plus Jakarta Sans
-- A11y: text contrast >= 4.5:1, visible focus rings, `prefers-reduced-motion` support
+## Verification
 
-## Keyboard Shortcuts
+Node 22 or newer is needed for developer checks only:
 
-| Key   | Action           |
-| ----- | ---------------- |
-| `n`   | New task         |
-| `/`   | Focus search     |
-| `Esc` | Close dialogs    |
-
-## Project Structure
-
-```
-.
-├── index.html    # Markup, SVG icon sprite, tab title/meta
-├── style.css     # Design tokens, layout, responsive rules
-├── script.js     # App logic: CRUD, storage, filters, board, export/import
-└── .gitignore
+```sh
+npm run check
+npm test
 ```
 
-## License
+Nine domain tests cover legacy records, bounded imports, ID merging, local calendar dates, combined filters, truthful summaries and conflict-aware undo. Browser review covered 47 interactions/checks in headless Chrome, including actual backup download, storage denial, cross-tab conflicts, keyboard focus, and widths from 320 to 1440px. Mobile tests use viewport emulation, not physical devices. Drag/drop was exercised through DOM DataTransfer events, with its native status alternative tested separately.
+
+## Design and provenance
+
+See [DESIGN.md](DESIGN.md) for tokens and component rules, and [PRODUCT.md](PRODUCT.md) for product scope.
+
+- **Taste:** app direction `achromatic-ledger`, no sidebar, self-hosted Geist and restrained date blue.
+- **UI/UX Pro Max:** productivity guidance, keyboard alternatives to dragging, validation and touch targets.
+- **Impeccable:** direction contract, craft review, detector and independent finish review/documentation.
+- **21st:** inspected [shadcn Drawer / Add task](https://21st.dev/@shadcn/components/drawer), then adapted the header, labelled form, footer and mobile-sheet interaction into native HTML `dialog`. No React/Vaul source or dependencies ship.
+- **Geist:** variable font from [Google Fonts](https://github.com/google/fonts/tree/main/ofl/geist), distributed under the bundled SIL Open Font License in `assets/fonts/OFL-Geist.txt`.
+- **Icons:** retained the incumbent SVG icon paths in `assets/icons.svg`; the branching favicon is authored as SVG. No raster assets ship.
+
+## Files
+
+| File                 | Purpose                                              |
+| -------------------- | ---------------------------------------------------- |
+| `index.html`         | App shell, settings and dialogs                      |
+| `style.css`          | Light/dark tokens and responsive components          |
+| `script.js`          | Browser interactions, persistence, cross-tab updates |
+| `core.js`            | Validation, filtering, backups, summaries, undo      |
+| `tests/core.test.js` | Domain regression checks                             |
+| `assets/`            | Self-hosted font, license, icons, favicon            |
 
 This project is provided for personal and educational use.
